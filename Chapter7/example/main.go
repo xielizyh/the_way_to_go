@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	// 7.7
@@ -63,4 +65,91 @@ func main() {
 	s.name = "xieli"
 	fmt.Println(s)
 
+	type test struct {
+		// 空数组
+		tmp []int
+	}
+	test1 := test{[]int{1, 2, 3}}
+	fmt.Println(test1.tmp)
+
+	var test2 []int
+	test2 = []int{3, 4, 5}
+	fmt.Println(test2)
+
+	// golang 当变量(包括结构体中的变量)或函数的首字母大写的时候，变量/函数会被从包中导出（在包外部可见，或者说公有的）
+	// 7.10
+	fmt.Println("------Example 7.10------")
+	seasons := []string{"Spring", "Summer", "Autumn", "Winter"}
+	for _, s := range seasons {
+		fmt.Printf("%s\n", s)
+	}
+	for ix := range seasons {
+		fmt.Printf("%d\n", ix)
+	}
+	items := []int{1, 2, 3, 4, 5, 6, 7}
+	for _, item := range items {
+		// item 只是 items 某个索引位置的值的一个拷贝，不能用来修改 items 该索引位置的值
+		item *= 2
+	}
+	fmt.Println(items)
+
+	for idx := range items {
+		items[idx] *= 2
+	}
+	fmt.Println(items)
+
+	sum := func(num ...int) int {
+		sum := 0
+		for _, value := range num {
+			sum += value
+		}
+		return sum
+	}(1, 2, 3, 4, 5, 6, 7, 8, 9)
+	fmt.Printf("sum = %d\n", sum)
+
+	// 切片可以反复扩展直到占据整个相关数组
+	var ar = [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	a := ar[2:2]
+	fmt.Println("The length of a is", len(a))
+	fmt.Println("The capcity of a is", cap(a))
+	a = ar[2:3]
+	fmt.Println("The length of a is", len(a))
+	fmt.Println("The capcity of a is", cap(a))
+
+	// 7.12
+	fmt.Println("------Example 7.12------")
+	slFrom := []int{1, 2, 3}
+	slTo := make([]int, 10)
+	// 拷贝个数是 slFrom 和 dslTo 的长度最小值
+	n := copy(slTo, slFrom)
+	fmt.Println(slTo)
+	fmt.Printf("Copied %d elements\n", n)
+
+	sl3 := []int{1, 2, 3}
+	// 如果 s 的容量不足以存储新增元素，
+	// append 会分配新的切片来保证已有切片元素和新增元素的存储
+	sl3 = append(sl3, 4, 5, 6)
+	fmt.Println(sl3)
+
+	sl4 := make([]byte, 2)
+	sl5 := make([]byte, 4)
+	//  append 操作时，一定要将 append 的结果重新赋值给一个 slice，防止由于底层数组的变更导致的数据错误
+	sl6 := AppendByte(sl4, sl5...)
+	fmt.Println(sl4, sl6)
+	// https://studygolang.com/articles/13405?fr=sidebar
+}
+
+// AppendByte 追加字节
+func AppendByte(slice []byte, data ...byte) []byte {
+	m := len(slice)
+	n := m + len(data)
+	// 原始切片容量不够，重新分配内存
+	if n > cap(slice) {
+		newSlice := make([]byte, (n+1)*2)
+		copy(newSlice, slice)
+		slice = newSlice
+	}
+	slice = slice[0:n]
+	copy(slice[m:n], data)
+	return slice
 }
