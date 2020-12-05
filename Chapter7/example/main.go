@@ -137,6 +137,31 @@ func main() {
 	sl6 := AppendByte(sl4, sl5...)
 	fmt.Println(sl4, sl6)
 	// https://studygolang.com/articles/13405?fr=sidebar
+	// 7.13
+	fmt.Println("------Example 7.13------")
+	s17 := "hello world"
+	for i, c := range s17 {
+		fmt.Printf("%d:%c ", i, c)
+	}
+	// 字符串本质上是一个字节数组
+	c := []byte(s17)
+	fmt.Println(c)
+	c = append(c, " string test"...)
+	fmt.Println(string(c))
+	// \u 表示Unicode码（码位），utf-8表示编码规则（将「码位」转换为字节序列的规则）
+	s18 := "\u00ff\u754c"
+	for i, c := range s18 {
+		fmt.Printf("%d:%c ", i, c)
+	}
+	// Go 语言中的字符串是不可变的，报错cannot assign to s17[0]
+	// s17[0] = 'c'
+	// 必须先将字符串转换成字节数组
+	c[0] = 'c'
+	s19 := string(c)
+	fmt.Println()
+	fmt.Println(s19)
+	// 切片的底层指向一个数组，只有在没有任何切片指向的时候，底层的数组内存才会被释放
+	// 想要避免这个问题，可以通过拷贝我们需要的部分到一个新的切片
 }
 
 // AppendByte 追加字节

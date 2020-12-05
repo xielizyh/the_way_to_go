@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	// 7.1
@@ -125,4 +128,34 @@ func main() {
 	slice11 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	slice11 = Filter(slice11, IsEven)
 	fmt.Println(slice11)
+	// 7.11
+	fmt.Println("------Excersise 7.11------")
+	src := make([]string, 5, 8)
+	for i := range src {
+		src[i] = strconv.Itoa(i + 65)
+	}
+	dst := make([]string, 5)
+	for i := range dst {
+		dst[i] = strconv.Itoa(i + 97)
+	}
+	newSlice := InsertStringSlice(src, dst, 2)
+	fmt.Println(newSlice)
+	// 7.11
+	fmt.Println("------Excersise 7.12------")
+	slice13 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	slice14, err := RemoveStringSlice(slice13, 3, 5)
+	if err == nil {
+		fmt.Println(slice14)
+	}
+
+	// 切片传参，函数体内可以改变实参的值，但是不能通过再次切片改变实参的长度
+	testold := make([]int, 4)
+	testnew := func(slice []int) []int {
+		for i := range slice {
+			slice[i] = i
+		}
+		slice := slice[:2]
+		return slice
+	}(testold)
+	fmt.Println(testold, testnew)
 }
