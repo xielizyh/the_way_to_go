@@ -53,6 +53,50 @@ func main() {
 	fmt.Println("First 3 chars:", m.first3Chars())
 	// 函数和方法的区别：函数将变量作为参数，方法在变量上被调用
 	// 方法没有和数据定义（结构体）混在一起：它们是正交的类型；表示（数据）和行为（方法）是独立的。
+	// 10.8
+	fmt.Println("------Excersise 10.8------")
+	mc := Mercedes{Car{4, nil}}
+	fmt.Printf("The Mercedes has %d wheel\n", mc.numberOfWheels())
+	mc.goToWorkIn()
+	mc.sayHiToMerker()
+	// 10.9
+	fmt.Println("------Excersise 10.9------")
+	p3 := &PointNew{3, 4}
+	fmt.Printf("The length of the vector p3 is %f\n", p3.Abs())
+	q3 := p3.Scale(5)
+	fmt.Printf("The length of the vector q is: %f\n", q3.Abs())
+	fmt.Printf("Point p3 scaled by 5 has the following coordinates: X %f - Y %f\n", q3.X, q3.Y)
+	// 10.11
+	fmt.Println("------Excersise 10.11------")
+	v := new(Voodoo)
+	v.Magic()
+	v.MoreMagic()
+	// 10.2
+	fmt.Println("------Excersise 10.2------")
+	var vi integer = integer{10}
+	f(vi.n)
+	// 10.12
+	fmt.Println("------Excersise 10.12------")
+	t := &T{7, -2.35, "abc\tdef"}
+	fmt.Println(t)
+	fmt.Printf("%v\n", t)
+	fmt.Println(*t)
+	// 10.13
+	fmt.Println("------Excersise 10.13------")
+	var celsius Celsius = 36.3
+	// 注意调用方法的类型要与类型的String方法接收者类型一致才会替换输出
+	// 否则仍然是自带库中的string方法
+	fmt.Println(celsius)
+	fmt.Println(&celsius)
+	// 10.14
+	fmt.Println("------Excersise 10.14------")
+	var day Day = WE
+	fmt.Println(day)
+	// 10.15
+	fmt.Println("------Excersise 10.15------")
+	var tz TZ = UTC
+	fmt.Println(tz)
+	fmt.Println(0 * HOUR)
 }
 
 type myTime struct {
@@ -61,4 +105,40 @@ type myTime struct {
 
 func (t myTime) first3Chars() string {
 	return t.Time.String()[0:3]
+}
+
+// Base base
+type Base struct{}
+
+// Magic magic
+func (Base) Magic() {
+	fmt.Println("base magic")
+}
+
+// MoreMagic moremagic
+func (b Base) MoreMagic() {
+	b.Magic()
+	b.Magic()
+}
+
+// Voodoo voodoo
+type Voodoo struct {
+	Base
+}
+
+// Magic magic
+func (Voodoo) Magic() {
+	fmt.Println("voodoo magic")
+}
+
+type integer struct {
+	n int
+}
+
+func (i integer) get() int {
+	return i.n * i.n
+}
+
+func f(i int) {
+	fmt.Println(i)
 }
