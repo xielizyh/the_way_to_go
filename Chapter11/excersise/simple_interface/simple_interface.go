@@ -28,3 +28,16 @@ func SimpleFunc(ser Simpler) {
 	ser.Set(5)
 	fmt.Println(ser.Get())
 }
+
+// RSimple RSimple
+type RSimple struct{}
+
+// Get 获取
+func (r *RSimple) Get() int {
+	return -1
+}
+
+// Set 设置
+func (r *RSimple) Set(n int) {
+
+}
