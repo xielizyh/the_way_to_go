@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strconv"
 
 	mysort "example/mysort"
 )
@@ -69,4 +72,101 @@ func main() {
 	ints()
 	strings()
 	days()
+	// 11.1
+	fmt.Println("------Example 11.10-----")
+	root := NewNode(nil, nil)
+	root.SetData("root node")
+	left := NewNode(nil, nil)
+	left.SetData("left node")
+	right := NewNode(nil, nil)
+	right.SetData("right node")
+	root.left = left
+	root.right = right
+	fmt.Printf("root: %v\n", root)
+	fmt.Printf("left: %p\n", left)
+	fmt.Printf("right: %p\n", right)
+
+	// 11.15
+	fmt.Println("------Example 11.15-----")
+	print(Day(1), "was", Celsius(25.0))
+
+	// 11.12
+	// 任何提供了接口方法实现代码的类型都隐式地实现了该接口，而不用显式地声明。
+	fmt.Println("------Example 11.15-----")
+	task := NewTask("start", log.New(os.Stdout, "[xli]", log.Lshortfile|log.Ldate|log.Ltime))
+	task.Printf("hello")
+}
+
+// Node 节点
+type Node struct {
+	left  *Node
+	data  interface{}
+	right *Node
+}
+
+// NewNode 创建节点
+func NewNode(left, right *Node) *Node {
+	return &Node{left, nil, right}
+}
+
+// SetData 设置节点数据
+func (n *Node) SetData(data interface{}) {
+	n.data = data
+}
+
+// Stringer 字符串接口
+type Stringer interface {
+	String() string
+}
+
+// Celsius 温度类型
+type Celsius float64
+
+// Sting 方法
+func (c Celsius) String() string {
+	return strconv.FormatFloat(float64(c), 'f', 1, 64) + " °C"
+}
+
+// Day 天
+type Day int
+
+var dayName = []string{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}
+
+// String 方法
+func (d Day) String() string {
+	return dayName[d]
+}
+
+func print(args ...interface{}) {
+	for i, arg := range args {
+		if i > 0 {
+			os.Stdout.WriteString(" ")
+		}
+		switch a := arg.(type) {
+		case Stringer:
+			// fmt.Println("here 1")
+			os.Stdout.WriteString(a.String())
+		case int:
+			// fmt.Println("here 2")
+			os.Stdout.WriteString(strconv.Itoa(a))
+		case string:
+			// fmt.Println("here 3")
+			os.Stdout.WriteString(a)
+		default:
+			os.Stdout.WriteString("???")
+		}
+	}
+}
+
+// Task Task包含了Logger类型的指针，那么可以调用该接口的方法
+// 当一个类型包含（内嵌）另一个类型（实现了一个或多个接口）的指针时，
+// 这个类型就可以使用（另一个类型）所有的接口方法。
+type Task struct {
+	cmd string
+	*log.Logger
+}
+
+// NewTask 创建
+func NewTask(cmd string, logger *log.Logger) *Task {
+	return &Task{cmd, logger}
 }
