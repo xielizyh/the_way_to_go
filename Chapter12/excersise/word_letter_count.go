@@ -1,4 +1,3 @@
-// 统计
 package main
 
 import (
@@ -8,7 +7,7 @@ import (
 	"strings"
 )
 
-func main() {
+func worldLetterCount() {
 	inputReader := bufio.NewReader(os.Stdin)
 	fmt.Println("Please input your message, type S to stop:")
 	nrchars, nrwords, nrlines := 0, 0, 0

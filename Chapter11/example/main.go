@@ -95,6 +95,10 @@ func main() {
 	fmt.Println("------Example 11.15-----")
 	task := NewTask("start", log.New(os.Stdout, "[xli]", log.Lshortfile|log.Ldate|log.Ltime))
 	task.Printf("hello")
+
+	// 11.18
+	fmt.Println("------Example 11.18-----")
+	carsTest()
 }
 
 // Node 节点
@@ -169,4 +173,86 @@ type Task struct {
 // NewTask 创建
 func NewTask(cmd string, logger *log.Logger) *Task {
 	return &Task{cmd, logger}
+}
+
+// Any 空接口
+type Any interface{}
+
+// Car 车
+type Car struct {
+	Model        string
+	Manufacturer string
+	BuildYear    int
+}
+
+// Cars 切片
+type Cars []*Car
+
+func carsTest() {
+	ford := &Car{"Fiesta", "Ford", 2008}
+	bmw := &Car{"XL 450", "BMW", 2011}
+	merc := &Car{"D600", "Mercedes", 2009}
+	bmw2 := &Car{"X 800", "BMW", 2008}
+
+	allCars := Cars([]*Car{ford, bmw, merc, bmw2})
+	allNewBMWs := allCars.FindAll(func(car *Car) bool {
+		return (car.Manufacturer == "BMW") && (car.BuildYear > 2010)
+	})
+	fmt.Println("AllCars: ", allCars)
+	fmt.Println("All BMWs: ", allNewBMWs)
+
+	manufacturers := []string{"Ford", "Aston Martin", "Land Rover", "BMW", "Jaguar"}
+	sortedAppender, sortedCars := MakeSortedAppender(manufacturers)
+	fmt.Println("Before map sortedCars:", sortedCars)
+	// 闭包（匿名）函数保存并积累其中的变量的值，不管外部函数退出与否，它都能够继续操作外部函数中的局部变量。
+	allCars.Process(sortedAppender)
+	fmt.Println("Map sortedCars: ", sortedCars)
+	BMWCount := len(sortedCars["BMW"])
+	fmt.Println("We have ", BMWCount, " BMWs")
+}
+
+// Process 处理
+func (cs Cars) Process(f func(car *Car)) {
+	for _, c := range cs {
+		f(c)
+	}
+}
+
+// FindAll 寻找匹配车辆
+func (cs Cars) FindAll(f func(car *Car) bool) Cars {
+	cars := make([]*Car, 0)
+	cs.Process(func(c *Car) {
+		if f(c) {
+			cars = append(cars, c)
+		}
+	})
+	return cars
+}
+
+// Map 创建新数据
+func (cs Cars) Map(f func(car *Car) Any) []Any {
+	result := make([]Any, 0, len(cs))
+	ix := 0
+	cs.Process(func(c *Car) {
+		result[ix] = f(c)
+		ix++
+	})
+	return result
+}
+
+// MakeSortedAppender 分类
+func MakeSortedAppender(manufacturers []string) (func(c *Car), map[string]Cars) {
+	sortedCars := make(map[string]Cars)
+	for _, m := range manufacturers {
+		sortedCars[m] = make([]*Car, 0)
+	}
+	sortedCars["Default"] = make([]*Car, 0)
+	appender := func(c *Car) {
+		if _, ok := sortedCars[c.Manufacturer]; ok {
+			sortedCars[c.Manufacturer] = append(sortedCars[c.Manufacturer], c)
+		} else {
+			sortedCars["Default"] = append(sortedCars["Default"], c)
+		}
+	}
+	return appender, sortedCars
 }
