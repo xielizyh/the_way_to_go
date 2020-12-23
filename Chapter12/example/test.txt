@@ -1,0 +1,753 @@
+[08:35:51.703][20201221_08:35:51]
+[08:35:56.188][Sec Thread] Secure image initializing!
+[08:35:56.189]Booting TFM v1.2.0
+[08:35:56.295]Non-Secure system starting...
+[08:35:56.295]
+[08:35:56.295]1 *****
+[08:35:56.295]
+[08:35:56.295]Crypto Suite
+[08:35:56.295]
+[08:35:56.295]Testing psa_crypto_init API: Basic
+[08:35:56.306][Info] Executing tests from non-secure
+[08:35:56.306][Check 1] Test calling crypto functions before psa_crypto_init
+[08:35:56.306][Check 2] Test psa_crypto_init
+[08:35:56.319][Check 3] Test multiple psa_crypto_init 
+[08:35:56.319]
+[08:35:56.319]
+[08:35:56.319]
+[08:35:56.319]Testing crypto key management APIs
+[08:35:56.319][Info] Executing tests from non-secure
+[08:35:56.319][Check 1] Test psa_import_key 16 bytes AES
+[08:35:56.331][Check 2] Test psa_import_key 24 bytes AES
+[08:35:56.331][Check 3] Test psa_import_key 32 bytes AES
+[08:35:56.349][Check 4] Test psa_import_key 2048 RSA public key
+[08:35:56.350][Check 5] Test psa_import_key with RSA 2048 keypair
+[08:35:56.350][Check 6] Test psa_import_key with EC Public key
+[08:35:56.362][Check 7] Test psa_import_key with EC keypair
+[08:35:56.362][Check 8] Test psa_import_key 16 bytes AES with invalid bits
+[08:35:56.372][Check 9] Test psa_import_key with key data greater than the algorithm size
+[08:35:56.372][Check 10] Test psa_import_key with incorrect key data size
+[08:35:56.385][Check 11] Test psa_import_key with invalid key type value
+[08:35:56.385]
+[08:35:56.385]
+[08:35:56.385]
+[08:35:56.385]Testing crypto key management APIs
+[08:35:56.386][Info] Executing tests from non-secure
+[08:35:56.398][Check 1] Test psa_export_key 16 Byte AES
+[08:35:56.398][Check 2] Test psa_export_key 24 Byte AES
+[08:35:56.398][Check 3] Test psa_export_key 32 Byte AES
+[08:35:56.416][Check 4] Test psa_export_key 2048 RSA public key
+[08:35:56.416][Check 5] Test psa_export_key with RSA 2048 keypair
+[08:35:56.416][Check 6] Test psa_export_key with EC Public key
+[08:35:56.428][Check 7] Test psa_export_key with EC keypair
+[08:35:56.428][Check 8] Test psa_export_key with key policy verify
+[08:35:56.442][Check 9] Test psa_export_key with less buffer size
+[08:35:56.442]
+[08:35:56.445]
+[08:35:56.445]
+[08:35:56.445]Testing crypto key management APIs
+[08:35:56.446][Info] Executing tests from non-secure
+[08:35:56.457][Check 1] Test psa_export_public_key 16 Byte AES
+[08:35:56.457][Check 2] Test psa_export_public_key 24 Byte AES
+[08:35:56.459][Check 3] Test psa_export_public_key 32 Byte AES
+[08:35:56.472][Check 4] Test psa_export_public_key 2048 RSA public key
+[08:35:56.472][Check 5] Test psa_export_public_key with RSA 2048 keypair
+[08:35:56.487][Check 6] Test psa_export_public_key with EC Public key
+[08:35:56.488][Check 7] Test psa_export_public_key with EC keypair
+[08:35:56.868][Check 8] Test psa_export_public_key with less buffer size
+[08:35:56.868]
+[08:35:56.868]
+[08:35:56.868]
+[08:35:56.869]Testing crypto key management APIs
+[08:35:56.881][Info] Executing tests from non-secure
+[08:35:56.881][Check 1] Test psa_destroy_key 16 Byte AES
+[08:35:56.881][Check 2] Test psa_destroy_key 24 Byte AES
+[08:35:56.896][Check 3] Test psa_destroy_key 32 Byte AES
+[08:35:56.896][Check 4] Test psa_destroy_key 2048 RSA public key
+[08:35:56.897][Check 5] Test psa_destroy_key with RSA 2048 keypair
+[08:35:56.910][Check 6] Test psa_destroy_key with EC Public key
+[08:35:56.910][Check 7] Test psa_destroy_key with EC keypair
+[08:35:56.910]
+[08:35:56.910]
+[08:35:56.910]
+[08:35:56.911]Testing crypto hash functions APIs
+[08:35:56.922][Info] Executing tests from non-secure
+[08:35:56.923][Check 1] Test psa_hash_compute with SHA224 algorithm
+[08:35:56.936][Check 2] Test psa_hash_compute with SHA256 algorithm
+[08:35:56.937][Check 3] Test psa_hash_compute with SHA384 algorithm
+[08:35:56.937][Check 4] Test psa_hash_compute with SHA512 algorithm
+[08:35:56.947][Check 5] Test psa_hash_compute with small buffer size
+[08:35:56.947][Check 6] Test psa_hash_compute with invalid algorithm
+[08:35:56.947]
+[08:35:56.947]
+[08:35:56.948]
+[08:35:56.960]Testing crypto hash functions APIs
+[08:35:56.960][Info] Executing tests from non-secure
+[08:35:56.961][Check 1] Test psa_hash_compare - SHA224 algorithm
+[08:35:56.971][Check 2] Test psa_hash_compare - SHA256 algorithm
+[08:35:56.972][Check 3] Test psa_hash_compare - SHA384 algorithm
+[08:35:56.972][Check 4] Test psa_hash_compare - SHA512 algorithm
+[08:35:56.983][Check 5] Test psa_hash_compare - incorrect hash
+[08:35:56.986][Check 6] Test psa_hash_compare - incorrect hash length
+[08:35:56.996][Check 7] Test psa_hash_compare - invalid algorithm
+[08:35:56.996]
+[08:35:56.996]
+[08:35:56.996]
+[08:35:56.996]Testing crypto key derivation APIs
+[08:35:56.997][Info] Executing tests from non-secure
+[08:35:57.008][Check 1] Test psa_key_derivation_setup - ECDH + HKDF-SHA-256
+[08:35:57.009][Check 2] Test psa_key_derivation_setup - ECDH, unknown KDF
+[08:35:57.021][Check 3] Test psa_key_derivation_setup - bad key derivation algorithm
+[08:35:57.021][Check 4] Test psa_key_derivation_setup - Invalid Algorithm
+[08:35:57.021]
+[08:35:57.021]
+[08:35:57.022]
+[08:35:57.032]Testing crypto key derivation APIs
+[08:35:57.033][Info] Executing tests from non-secure
+[08:35:57.035][Check 1] Test psa_key_derivation_input_bytes - Step as Info
+[08:35:57.046][Check 2] Test psa_key_derivation_input_bytes - Step as secret
+[08:35:57.046][Check 3] Test psa_key_derivation_input_bytes - Step as salt
+[08:35:57.057][Check 4] Test psa_key_derivation_input_bytes - Step as label
+[08:35:57.057][Check 5] Test psa_key_derivation_input_bytes - Step as seed
+[08:35:57.071][Check 6] Test psa_key_derivation_input_bytes - Invalid step
+[08:35:57.071]
+[08:35:57.071]
+[08:35:57.071]
+[08:35:57.071]Testing crypto key attributes APIs
+[08:35:57.072][Info] Executing tests from non-secure
+[08:35:57.083][Check 1] Test set/get key attributes
+[08:35:57.083]
+[08:35:57.083]
+[08:35:57.083]
+[08:35:57.083]Testing crypto hash functions APIs
+[08:35:57.086][Info] Executing tests from non-secure
+[08:35:57.095][Check 1] Test psa_hash_setup with SHA224 algorithm
+[08:35:57.095][Check 2] Test psa_hash_setup with SHA256 algorithm
+[08:35:57.096][Check 3] Test psa_hash_setup with SHA384 algorithm
+[08:35:57.106][Check 4] Test psa_hash_setup with SHA512 algorithm
+[08:35:57.107][Check 5] Test psa_hash_setup with Invalid hash algorithm
+[08:35:57.121][Check 6] Test psa_hash_setup with Invalid algorithm
+[08:35:57.121][Check 7] Test psa_hash_setup with CTR algorithm
+[08:35:57.121]
+[08:35:57.121]
+[08:35:57.121]
+[08:35:57.122]Testing crypto hash functions APIs
+[08:35:57.132][Info] Executing tests from non-secure
+[08:35:57.132][Check 1] Test psa_hash_update with SHA224 algorithm
+[08:35:57.143][Check 2] Test psa_hash_update with SHA256 algorithm
+[08:35:57.143][Check 3] Test psa_hash_update with SHA384 algorithm
+[08:35:57.144][Check 4] Test psa_hash_update with SHA512 algorithm
+[08:35:57.156][Check 5] Test psa_hash_update without hash setup
+[08:35:57.156][Check 6] Test psa_hash_update with completed opertaion handle 
+[08:35:57.156]
+[08:35:57.156]
+[08:35:57.157]
+[08:35:57.170]Testing crypto hash functions APIs
+[08:35:57.170][Info] Executing tests from non-secure
+[08:35:57.171][Check 1] Test psa_hash_verify with SHA224 algorithm
+[08:35:57.181][Check 2] Test psa_hash_verify with SHA256 algorithm
+[08:35:57.182][Check 3] Test psa_hash_verify with SHA384 algorithm
+[08:35:57.192][Check 4] Test psa_hash_verify with SHA512 algorithm
+[08:35:57.193][Check 5] Test psa_hash_verify with incorrect expected hash
+[08:35:57.193][Check 6] Test psa_hash_verify with incorrect hash length
+[08:35:57.206][Check 7] test psa_hash_verify with inactive & invalid operation handle
+[08:35:57.206]
+[08:35:57.206]
+[08:35:57.206]
+[08:35:57.207]Testing crypto hash functions APIs
+[08:35:57.220][Info] Executing tests from non-secure
+[08:35:57.220][Check 1] Test psa_hash_finish with SHA224 algorithm
+[08:35:57.221][Check 2] Test psa_hash_finish with SHA256 algorithm
+[08:35:57.230][Check 3] Test psa_hash_finish with SHA384 algorithm
+[08:35:57.231][Check 4] Test psa_hash_finish with SHA512 algorithm
+[08:35:57.244][Check 5] Test psa_hash_finish with invalid hash buffer size
+[08:35:57.244][Check 6] test psa_hash_finish with inactive operation handle
+[08:35:57.244]
+[08:35:57.244]
+[08:35:57.244]
+[08:35:57.255]Testing crypto hash functions APIs
+[08:35:57.255][Info] Executing tests from non-secure
+[08:35:57.256][Check 1] Test psa_hash_abort with SHA224 algorithm
+[08:35:57.269][Check 2] Test psa_hash_abort with SHA256 algorithm
+[08:35:57.269][Check 3] Test psa_hash_abort with SHA384 algorithm
+[08:35:57.270][Check 4] Test psa_hash_abort with SHA512 algorithm
+[08:35:57.280][Check 5] Test psa_hash_finish after calling psa_hash_abort
+[08:35:57.280]
+[08:35:57.280]
+[08:35:57.280]
+[08:35:57.281]Testing crypto generator functions APIs
+[08:35:57.293][Info] Executing tests from non-secure
+[08:35:57.293][Check 1] Test psa_generate_key 16 Byte AES
+[08:35:57.294][Check 2] Test psa_generate_key 24 Byte AES
+[08:35:57.306][Check 3] Test psa_generate_key 32 Byte AES
+[08:35:57.307][Check 4] Test psa_generate_key with RSA 2048 Keypair
+[08:36:34.161][Check 5] Test psa_generate_key with ECC KeyPair
+[08:36:34.539][Check 6] Test psa_generate_key with RSA 2048 Public key
+[08:36:34.540][Check 7] Test psa_generate_key with invalid key type
+[08:36:34.553][Check 8] Test psa_generate_key with invalid usage flags
+[08:36:34.553]
+[08:36:34.553]
+[08:36:34.553]
+[08:36:34.553]Testing crypto generation APIs
+[08:36:34.553][Info] Executing tests from non-secure
+[08:36:34.566][Check 1] Test psa_generate_random to get 0 Byte data
+[08:36:34.568][Check 2] Test psa_generate_random to get 16 Byte data
+[08:36:34.587][Check 3] Test psa_generate_random to get 24 Byte data
+[08:36:34.587][Check 4] Test psa_generate_random to get 32 Byte data
+[08:36:34.599][Check 5] Test psa_generate_random to get 64 Byte data
+[08:36:34.600][Check 6] Test psa_generate_random to get 128 Byte data
+[08:36:34.608][Check 7] Test psa_generate_random to get 256 Byte data
+[08:36:34.624][Check 8] Test psa_generate_random to get 512 Byte data
+[08:36:34.648][Check 9] Test psa_generate_random to get 1000 Byte data
+[08:36:34.693]
+[08:36:34.693]
+[08:36:34.693]
+[08:36:34.693]Testing crypto key derivation APIs
+[08:36:34.694][Info] Executing tests from non-secure
+[08:36:34.706][Check 1] Test psa_key_derivation_input_key 16 Byte Key
+[08:36:34.707][Check 2] Test psa_key_derivation_input_key with invalid usage
+[08:36:34.720][Check 3] Test psa_key_derivation_input_key with step as label
+[08:36:34.720][Check 4] Test psa_key_derivation_input_key with step as info
+[08:36:34.721][Check 5] Test psa_key_derivation_input_key with step as seed
+[08:36:34.728][Check 6] Test psa_key_derivation_input_key with step as salt
+[08:36:34.742][Check 7] Test psa_key_derivation_input_key with key type as AES(not derive)
+[08:36:34.743][Check 8] Test psa_key_derivation_input_key incorrect key algorithm
+[08:36:34.757][Check 9] Test psa_key_derivation_input_key with key type as 2048 RSA public key
+[08:36:34.758][Check 10] Test psa_key_derivation_input_key with key type as RSA 2048 keypair
+[08:36:34.770][Check 11] Test psa_key_derivation_input_key with zero as step
+[08:36:34.770][Check 12] Test psa_cipher_decrypt_setup - Invalid key handle
+[08:36:34.782][Check 13] Test psa_cipher_decrypt_setup - Zero as key handle
+[08:36:34.782]
+[08:36:34.782]
+[08:36:34.782]
+[08:36:34.782]Testing crypto key derivation APIs
+[08:36:34.784][Info] Executing tests from non-secure
+[08:36:34.790][Check 1] Test psa_key_derivation_key_agreement - ECDH SECP256R1
+[08:36:35.367][Check 2] Test psa_key_derivation_key_agreement - Invalid step
+[08:36:35.946][Check 3] Test psa_key_derivation_key_agreement - ECDH SECP384R1
+[08:36:36.898][Check 4] Test psa_key_derivation_key_agreement - Invalid usage
+[08:36:36.915][Check 5] Test psa_key_derivation_key_agreement - KDF not a key agreement alg
+[08:36:36.916][Check 6] Test psa_key_derivation_key_agreement - Public key of different curve
+[08:36:36.926][Check 7] Test psa_key_derivation_key_agreement - Pub key instead of Prv key
+[08:36:36.927][Check 8] Test psa_key_derivation_key_agreement - Invalid handle
+[08:36:36.939][Check 9] Test psa_key_derivation_key_agreement - Zero as handle
+[08:36:36.939]
+[08:36:36.939]
+[08:36:36.939]
+[08:36:36.939]Testing crypto key derivation APIs
+[08:36:36.940][Info] Executing tests from non-secure
+[08:36:36.954][Check 1] Test psa_key_derivation_output_bytes - HKDF
+[08:36:36.955][Check 2] Test psa_key_derivation_output_bytes - optional salt
+[08:36:36.969][Check 3] Test psa_key_derivation_output_bytes - capacity < output_length
+[08:36:36.970][Check 4] Test psa_key_derivation_output_bytes - missing info
+[08:36:36.981][Check 5] Test psa_key_derivation_output_bytes - missing salt/secret/info
+[08:36:36.982][Check 6] Test psa_key_derivation_output_bytes - TLS12_PRF
+[08:36:36.992][Check 7] Test psa_key_derivation_output_bytes - capacity < output_length
+[08:36:37.008][Check 8] Test psa_key_derivation_output_bytes - missing seed/secret/label
+[08:36:37.008]
+[08:36:37.008]
+[08:36:37.008]
+[08:36:37.008]Testing crypto key derivation APIs
+[08:36:37.008][Info] Executing tests from non-secure
+[08:36:37.022][Check 1] Test psa_key_derivation_output_key - Key
+[08:36:37.022]        Failed at Checkpoint: 8
+[08:36:37.022]        Actual: -137
+[08:36:37.022]        Expected: 0
+[08:36:37.022]
+[08:36:37.022]
+[08:36:37.022]
+[08:36:37.023]Testing crypto key derivation APIs
+[08:36:37.035][Info] Executing tests from non-secure
+[08:36:37.035][Check 1] Test psa_key_derivation_abort
+[08:36:37.035]
+[08:36:37.035]
+[08:36:37.035]
+[08:36:37.036]Testing crypto key derivation APIs
+[08:36:37.046][Info] Executing tests from non-secure
+[08:36:37.047][Check 1] Test psa_key_derivation_set_get_capacity - < operation's capacity
+[08:36:37.058][Check 2] Test psa_key_derivation_set_get_capacity - = operation's capacity
+[08:36:37.059][Check 3] Test psa_key_derivation_set_get_capacity - > operation's capacity
+[08:36:37.070][Check 4] Test psa_key_derivation_set_get_capacity - unchanged capacity
+[08:36:37.070]
+[08:36:37.070]
+[08:36:37.070]
+[08:36:37.070]Testing crypto AEAD APIs
+[08:36:37.071][Info] Executing tests from non-secure
+[08:36:37.081][Check 1] Test psa_aead_encrypt - CCM - AES - 13B nonce & 8B add data
+[08:36:37.096][Check 2] Test psa_aead_encrypt - CCM - AES - 13B nonce & 32B add data
+[08:36:37.097][Check 3] Test psa_aead_encrypt - CCM - AES - 24 bytes Tag length = 4
+[08:36:37.108][Check 4] Test psa_aead_encrypt - CCM - AES - Zero additional data
+[08:36:37.109][Check 5] Test psa_aead_encrypt - CCM - AES - Zero plaintext
+[08:36:37.121][Check 6] Test psa_aead_encrypt - GCM - AES - 12B nonce & 12B add data
+[08:36:37.121][Check 7] Test psa_aead_encrypt - Unsupported algorithm
+[08:36:37.122][Check 8] Test psa_aead_encrypt - Invalid usage flag
+[08:36:37.134][Check 9] Test psa_aead_encrypt - Invalid ciphertext_size
+[08:36:37.135][Check 10] Test psa_aead_encrypt - Invalid nonce
+[08:36:37.147][Check 11] Test psa_aead_encrypt - Invalid tag length 0
+[08:36:37.147]
+[08:36:37.147]
+[08:36:37.147]
+[08:36:37.147]Testing crypto AEAD APIs
+[08:36:37.148][Info] Executing tests from non-secure
+[08:36:37.159][Check 1] Test psa_aead_decrypt - CCM - AES - 13B nonce & 8B add data
+[08:36:37.160][Check 2] Test psa_aead_decrypt - CCM - AES - 13B nonce & 32B add data
+[08:36:37.172][Check 3] Test psa_aead_decrypt - CCM - AES - 24 bytes Tag length = 4
+[08:36:37.173][Check 4] Test psa_aead_decrypt - CCM - AES - Zero additional data
+[08:36:37.187][Check 5] Test psa_aead_decrypt - CCM - AES - Zero plaintext
+[08:36:37.187][Check 6] Test psa_aead_decrypt - GCM - AES - 12B nonce & 12B add data
+[08:36:37.197][Check 7] Test psa_aead_decrypt - Unsupported algorithm
+[08:36:37.197][Check 8] Test psa_aead_decrypt - Invalid usage flag
+[08:36:37.210][Check 9] Test psa_aead_decrypt - Invalid plaintext_size
+[08:36:37.210][Check 10] Test psa_aead_decrypt - Invalid nonce
+[08:36:37.223][Check 11] Test psa_aead_decrypt - Invalid cihpertext
+[08:36:37.223][Check 12] Test psa_aead_decrypt - Invalid cihpertext_size
+[08:36:37.223][Check 13] Test psa_aead_decrypt - Invalid tag length 0
+[08:36:37.223]
+[08:36:37.223]
+[08:36:37.224]
+[08:36:37.238]Testing crypto MAC APIs
+[08:36:37.238][Info] Executing tests from non-secure
+[08:36:37.239][Check 1] Test psa_mac_sign_setup 64 Byte HMAC
+[08:36:37.247][Check 2] Test psa_mac_sign_setup 16 Byte AES - CMAC
+[08:36:37.248][Check 3] Test psa_mac_sign_setup incompactible HMAC for CMAC
+[08:36:37.260][Check 4] Test psa_mac_sign_setup invalid usage
+[08:36:37.260][Check 5] Test psa_mac_sign_setup invalid key type
+[08:36:37.261][Check 6] Test psa_mac_sign_setup truncated MAC too large
+[08:36:37.273][Check 7] Test psa_mac_sign_setup truncated MAC too small
+[08:36:37.274][Check 8] Test psa_mac_sign_setup bad algorithm (unknown MAC algorithm)
+[08:36:37.286][Check 9] Test psa_mac_sign_setup bad algorithm (not a MAC algorithm)
+[08:36:37.287][Check 10] Test psa_mac_sign_setup invalid key handle
+[08:36:37.298][Check 11] Test psa_mac_sign_setup zero as key handle
+[08:36:37.298]
+[08:36:37.298]
+[08:36:37.298]
+[08:36:37.298]Testing crypto MAC APIs
+[08:36:37.300][Info] Executing tests from non-secure
+[08:36:37.311][Check 1] Test psa_mac_update 64 Byte HMAC SHA256
+[08:36:37.311][Check 2] Test psa_mac_update 16 Byte AES - CMAC
+[08:36:37.326][Check 3] Test psa_mac_update 32 Byte HMAC SHA512
+[08:36:37.326][Check 4] Test psa_mac_update without mac setup
+[08:36:37.326]
+[08:36:37.326]
+[08:36:37.326]
+[08:36:37.326]Testing crypto MAC APIs
+[08:36:37.327][Info] Executing tests from non-secure
+[08:36:37.340][Check 1] Test psa_mac_sign_finish HMAC SHA 224
+[08:36:37.341][Check 2] Test psa_mac_sign_finish HMAC SHA 256
+[08:36:37.355][Check 3] Test psa_mac_sign_finish HMAC SHA 512
+[08:36:37.356][Check 4] Test psa_mac_sign_finish HMAC SHA 224 (truncated to 8 Byte)
+[08:36:37.371][Check 5] Test psa_mac_sign_finish CMAC AES 128
+[08:36:37.371][Check 6] Test psa_mac_sign_finish - Small buffer size
+[08:36:37.371]
+[08:36:37.371]
+[08:36:37.371]
+[08:36:37.371]Testing crypto MAC APIs
+[08:36:37.372][Info] Executing tests from non-secure
+[08:36:37.382][Check 1] Test psa_mac_verify_setup 64 Byte HMAC
+[08:36:37.382][Check 2] Test psa_mac_verify_setup 16 Byte AES - CMAC
+[08:36:37.393][Check 3] Test psa_mac_verify_setup incompactible HMAC for CMAC
+[08:36:37.394][Check 4] Test psa_mac_verify_setup invalid usage
+[08:36:37.406][Check 5] Test psa_mac_verify_setup invalid key type
+[08:36:37.407][Check 6] Test psa_mac_verify_setup truncated MAC too large
+[08:36:37.420][Check 7] Test psa_mac_verify_setup truncated MAC too small
+[08:36:37.421][Check 8] Test psa_mac_verify_setup bad algorithm (unknown MAC algorithm)
+[08:36:37.430][Check 9] Test psa_mac_verify_setup bad algorithm (not a MAC algorithm)
+[08:36:37.430][Check 10] Test psa_mac_verify_setup invalid key handle
+[08:36:37.443][Check 11] Test psa_mac_verify_setup zero as key handle
+[08:36:37.443]
+[08:36:37.443]
+[08:36:37.443]
+[08:36:37.443]Testing crypto MAC APIs
+[08:36:37.443][Info] Executing tests from non-secure
+[08:36:37.444][Check 1] Test psa_mac_verify_finish - HMAC - SHA 224
+[08:36:37.459][Check 2] Test psa_mac_verify_finish - HMAC - SHA 256
+[08:36:37.460][Check 3] Test psa_mac_verify_finish - HMAC - SHA 512
+[08:36:37.471][Check 4] Test psa_mac_verify_finish - HMAC - SHA 224 (truncated to 8 Byte)
+[08:36:37.472][Check 5] Test psa_mac_verify_finish - CMAC - AES 128
+[08:36:37.486][Check 6] Test psa_mac_verify_finish - small size buffer
+[08:36:37.486][Check 7] Test psa_mac_verify_finish - Incorrect expected MAC
+[08:36:37.486]
+[08:36:37.486]
+[08:36:37.486]
+[08:36:37.486]Testing crypto MAC APIs
+[08:36:37.497][Info] Executing tests from non-secure
+[08:36:37.497][Check 1] Test psa_mac_abort HMAC SHA 224
+[08:36:37.498][Check 2] Test psa_mac_abort HMAC SHA 256
+[08:36:37.509][Check 3] Test psa_mac_abort HMAC SHA 512
+[08:36:37.510][Check 4] Test psa_mac_abort HMAC SHA 224 (truncated to 8 Byte)
+[08:36:37.524][Check 5] Test psa_mac_abort CMAC AES 128
+[08:36:37.524][Check 6] Test psa_mac_sign_finish after calling psa_mac_abort
+[08:36:37.524]
+[08:36:37.524]
+[08:36:37.524]
+[08:36:37.525]Testing crypto symmetric cipher APIs
+[08:36:37.537][Info] Executing tests from non-secure
+[08:36:37.537][Check 1] Test psa_cipher_encrypt_setup 16 Byte AES
+[08:36:37.538][Check 2] Test psa_cipher_encrypt_setup 24 Byte AES
+[08:36:37.548][Check 3] Test psa_cipher_encrypt_setup 32 Byte AES
+[08:36:37.549][Check 4] Test psa_cipher_encrypt_setup 16 Byte raw data
+[08:36:37.560][Check 5] Test psa_cipher_encrypt_setup - not a cipher algorithm
+[08:36:37.561][Check 6] Test psa_cipher_encrypt_setup - unknown cipher algorithm
+[08:36:37.573][Check 7] Test psa_cipher_encrypt_setup - incorrect usage
+[08:36:37.574][Check 8] Test psa_cipher_encrypt_setup - RSA public key
+[08:36:37.589][Check 9] Test psa_cipher_encrypt_setup - RSA keypair
+[08:36:37.590][Check 10] Test psa_cipher_encrypt_setup - EC Public key
+[08:36:37.602][Check 11] Test psa_cipher_encrypt_setup - EC keypair
+[08:36:37.603][Check 12] Test psa_cipher_encrypt_setup - Invalid key handle
+[08:36:37.614][Check 13] Test psa_cipher_encrypt_setup - Zero as key handle
+[08:36:37.614]
+[08:36:37.614]
+[08:36:37.614]
+[08:36:37.614]Testing crypto symmetric cipher APIs
+[08:36:37.615][Info] Executing tests from non-secure
+[08:36:37.626][Check 1] Test psa_cipher_decrypt_setup 16 Byte AES
+[08:36:37.627][Check 2] Test psa_cipher_decrypt_setup 24 Byte AES
+[08:36:37.627][Check 3] Test psa_cipher_decrypt_setup 32 Byte AES
+[08:36:37.639][Check 4] Test psa_cipher_decrypt_setup 16 Byte raw data
+[08:36:37.639][Check 5] Test psa_cipher_decrypt_setup - not a cipher algorithm
+[08:36:37.652][Check 6] Test psa_cipher_decrypt_setup - unknown cipher algorithm
+[08:36:37.653][Check 7] Test psa_cipher_decrypt_setup - incorrect usage
+[08:36:37.668][Check 8] Test psa_cipher_decrypt_setup - RSA public key
+[08:36:37.669][Check 9] Test psa_cipher_decrypt_setup - RSA keypair
+[08:36:37.680][Check 10] Test psa_cipher_decrypt_setup - EC Public key
+[08:36:37.680][Check 11] Test psa_cipher_decrypt_setup - EC keypair
+[08:36:37.692][Check 12] Test psa_cipher_decrypt_setup - Invalid key handle
+[08:36:37.692][Check 13] Test psa_cipher_decrypt_setup - Zero as key handle
+[08:36:37.692]
+[08:36:37.692]
+[08:36:37.692]
+[08:36:37.693]Testing crypto symmetric cipher APIs
+[08:36:37.705][Info] Executing tests from non-secure
+[08:36:37.705][Check 1] Test psa_cipher_generate_iv 16 Byte AES
+[08:36:37.707][Check 2] Test psa_cipher_generate_iv 24 Byte AES
+[08:36:37.719][Check 3] Test psa_cipher_generate_iv 32 Byte AES
+[08:36:37.719][Check 4] Test psa_cipher_generate_iv AES - small iv buffer
+[08:36:37.719]
+[08:36:37.719]
+[08:36:37.720]
+[08:36:37.731]Testing crypto symmetric cipher APIs
+[08:36:37.731][Info] Executing tests from non-secure
+[08:36:37.732][Check 1] Test psa_cipher_set_iv 16 Byte AES
+[08:36:37.744][Check 2] Test psa_cipher_set_iv 24 Byte AES
+[08:36:37.744][Check 3] Test psa_cipher_set_iv 32 Byte AES
+[08:36:37.745][Check 4] Test psa_cipher_set_iv AES - small iv buffer
+[08:36:37.758][Check 5] Test psa_cipher_set_iv AES - large iv buffer
+[08:36:37.758]
+[08:36:37.758]
+[08:36:37.758]
+[08:36:37.758]Testing crypto symmetric cipher APIs
+[08:36:37.758][Info] Executing tests from non-secure
+[08:36:37.770][Check 1] Test psa_cipher_update - Encrypt - AES CBC_NO_PADDING
+[08:36:37.771][Check 2] Test psa_cipher_update - Encrypt - AES CBC_NO_PADDING (Short in)
+[08:36:37.780][Check 3] Test psa_cipher_update - Encrypt - AES CBC_PKCS7
+[08:36:37.795][Check 4] Test psa_cipher_update - Encrypt - AES CBC_PKCS7 (Short input)
+[08:36:37.795][Check 5] Test psa_cipher_update - Encrypt - AES CTR
+[08:36:37.796][Check 6] Test psa_cipher_update - Encrypt - small output buffer size
+[08:36:37.805][Check 7] Test psa_cipher_update - Decrypt - AES CBC_NO_PADDING
+[08:36:37.819][Check 8] Test psa_cipher_update - Decrypt - AES CBC_NO_PADDING (Short in)
+[08:36:37.820][Check 9] Test psa_cipher_update - Decrypt - AES CBC_PKCS7
+[08:36:37.833][Check 10] Test psa_cipher_update - Decrypt - AES CBC_PKCS7 (Short input)
+[08:36:37.834][Check 11] Test psa_cipher_update - Decrypt - AES CTR
+[08:36:37.845][Check 12] Test psa_cipher_update - Decrypt - small output buffer size
+[08:36:37.845][Check 13] Test psa_cipher_update without cipher setup
+[08:36:37.845]
+[08:36:37.845]
+[08:36:37.845]
+[08:36:37.846]Testing crypto symmetric cipher APIs
+[08:36:37.858][Info] Executing tests from non-secure
+[08:36:37.859][Check 1] Test psa_cipher_finish - Encrypt - AES CBC_NO_PADDING
+[08:36:37.870][Check 2] Test psa_cipher_finish - Encrypt - AES CBC_NO_PADDING (Short in)
+[08:36:37.871][Check 3] Test psa_cipher_finish - Encrypt - AES CBC_PKCS7
+[08:36:37.885][Check 4] Test psa_cipher_finish - Encrypt - AES CBC_PKCS7 (Short input)
+[08:36:37.885][Check 5] Test psa_cipher_finish - Encrypt - AES CTR
+[08:36:37.896][Check 6] Test psa_cipher_finish - Encrypt - AES CTR (short input)
+[08:36:37.897][Check 7] Test psa_cipher_finish - Encrypt - small output buffer size
+[08:36:37.909][Check 8] Test psa_cipher_finish - Decrypt - AES CBC_NO_PADDING
+[08:36:37.909][Check 9] Test psa_cipher_finish - Decrypt - AES CBC_NO_PADDING (Short in)
+[08:36:37.921][Check 10] Test psa_cipher_update - Decrypt - AES CBC_PKCS7
+[08:36:37.921][Check 11] Test psa_cipher_finish - Decrypt - AES CBC_PKCS7 (Short input)
+[08:36:37.936][Check 12] Test psa_cipher_finish - Decrypt - AES CTR
+[08:36:37.936][Check 13] Test psa_cipher_finish - Decrypt - AES CTR (short input)
+[08:36:37.936]
+[08:36:37.936]
+[08:36:37.937]
+[08:36:37.947]Testing crypto symmetric cipher APIs
+[08:36:37.947][Info] Executing tests from non-secure
+[08:36:37.948][Check 1] Test psa_cipher_abort - Encrypt - AES CBC_NO_PADDING
+[08:36:37.961][Check 2] Test psa_cipher_abort - Encrypt - AES CBC_PKCS7
+[08:36:37.962][Check 3] Test psa_cipher_abort - Encrypt - AES CTR
+[08:36:37.972][Check 4] Test psa_cipher_abort - Decrypt - AES CBC_NO_PADDING
+[08:36:37.973][Check 5] Test psa_cipher_abort - Decrypt - AES CBC_PKCS7
+[08:36:37.985][Check 6] Test psa_cipher_abort - Decrypt - AES CTR
+[08:36:37.985][Check 7] Test psa_cipher_update after psa_cipher_abort should fail
+[08:36:37.985]
+[08:36:37.985]
+[08:36:37.985]
+[08:36:37.987]Testing crypto asymmetric APIs
+[08:36:37.998][Info] Executing tests from non-secure
+[08:36:38.000][Check 1] Test psa_asymmetric_encrypt - RSA PKCS1V15
+[08:36:38.045][Check 2] Test psa_asymmetric_encrypt - RSA KEY_PAIR PKCS1V15
+[08:36:38.626][Check 3] Test psa_asymmetric_encrypt - RSA OAEP SHA256
+[08:36:38.654][Check 4] Test psa_asymmetric_encrypt - RSA OAEP SHA256 with label
+[08:36:38.681][Check 5] Test psa_asymmetric_encrypt - RSA KEY_PAIR OAEP SHA256
+[08:36:39.240][Check 6] Test psa_asymmetric_encrypt - RSA KEY_PAIR OAEP SHA256 with label
+[08:36:39.805][Check 7] Test psa_asymmetric_encrypt - Small output buffer
+[08:36:39.805][Check 8] Test psa_asymmetric_encrypt - Invalid algorithm
+[08:36:39.815][Check 9] Test psa_asymmetric_encrypt - Invalid key type
+[08:36:39.817][Check 10] Test psa_asymmetric_encrypt - Invalid usage
+[08:36:39.828][Check 11] Test psa_asymmetric_encrypt - RSA PKCS1V15 - Salt
+[08:36:39.828][Check 12] Test psa_asymmetric_encrypt - Invalid key handle
+[08:36:39.841][Check 13] Test psa_asymmetric_encrypt - Zero as key handle
+[08:36:39.841]
+[08:36:39.841]
+[08:36:39.841]
+[08:36:39.841]Testing crypto asymmetric APIs
+[08:36:39.841][Info] Executing tests from non-secure
+[08:36:39.846][Check 1] Test psa_asymmetric_decrypt - RSA KEY_PAIR PKCS1V15
+[08:36:40.386][Check 2] Test psa_asymmetric_decrypt - RSA KEY_PAIR OAEP SHA256
+[08:36:40.920][Check 3] Test psa_asymmetric_decrypt - RSA KEY_PAIR OAEP SHA256 with label
+[08:36:41.452][Check 4] Test psa_asymmetric_decrypt - Invalid key type (RSA public key)
+[08:36:41.459][Check 5] Test psa_asymmetric_decrypt - Small output buffer
+[08:36:42.003][Check 6] Test psa_asymmetric_decrypt - Invalid algorithm
+[08:36:42.004][Check 7] Test psa_asymmetric_decrypt - Invalid key type (AES Key)
+[08:36:42.018][Check 8] Test psa_asymmetric_decrypt - Invalid usage
+[08:36:42.020][Check 9] Test psa_asymmetric_decrypt - RSA PKCS1V15 - Salt
+[08:36:42.031][Check 10] Test psa_asymmetric_decrypt - Invalid key handle
+[08:36:42.031][Check 11] Test psa_asymmetric_decrypt - Zero as key handle
+[08:36:42.031]
+[08:36:42.031]
+[08:36:42.031]
+[08:36:42.045]Testing crypto asymmetric APIs
+[08:36:42.045][Info] Executing tests from non-secure
+[08:36:42.046][Check 1] Test psa_asymmetric_sign - RSA KEY_PAIR PKCS1V15 RAW
+[08:36:42.592][Check 2] Test psa_asymmetric_sign - RSA KEY_PAIR PKCS1V15 SHA-256
+[08:36:43.131][Check 3] Test psa_asymmetric_sign - ECDSA SECP256R1 SHA-256
+[08:36:43.755][Check 4] Test psa_asymmetric_sign - Invalid key type (RSA public key)
+[08:36:43.756][Check 5] Test psa_asymmetric_sign - Small output buffer
+[08:36:43.772][Check 6] Test psa_asymmetric_sign - Invalid algorithm
+[08:36:43.773][Check 7] Test psa_asymmetric_sign - Invalid key type (AES Key)
+[08:36:43.789][Check 8] Test psa_asymmetric_sign - Invalid usage
+[08:36:43.790][Check 9] Test psa_asymmetric_sign - Wrong hash size
+[08:36:43.802][Check 10] Test psa_asymmetric_sign - Invalid key handle
+[08:36:43.803][Check 11] Test psa_asymmetric_sign - Zero as key handle
+[08:36:43.803]
+[08:36:43.803]
+[08:36:43.803]
+[08:36:43.803]Testing crypto asymmetric APIs
+[08:36:43.815][Info] Executing tests from non-secure
+[08:36:43.816][Check 1] Test psa_asymmetric_verify - RSA KEY_PAIR PKCS1V15 RAW
+[08:36:43.839][Check 2] Test psa_asymmetric_verify - RSA KEY_PAIR PKCS1V15 SHA-256
+[08:36:43.866][Check 3] Test psa_asymmetric_verify - ECDSA KEY_PAIR SECP256R1 SHA-256
+[08:36:45.298][Check 4] Test psa_asymmetric_verify - EC public key
+[08:36:46.531][Check 5] Test psa_asymmetric_verify - RSA public key
+[08:36:46.566][Check 6] Test psa_asymmetric_verify - Small output buffer
+[08:36:46.567][Check 7] Test psa_asymmetric_verify - Invalid algorithm
+[08:36:46.579][Check 8] Test psa_asymmetric_verify - Invalid key type (AES Key)
+[08:36:46.580][Check 9] Test psa_asymmetric_verify - Invalid usage
+[08:36:46.595][Check 10] Test psa_asymmetric_verify - Wrong hash size
+[08:36:46.596][Check 11] Test psa_asymmetric_verify - Wrong signature
+[08:36:46.626][Check 12] Test psa_asymmetric_verify - Wrong signature size
+[08:36:46.628][Check 13] Test psa_asymmetric_verify - Invalid key handle
+[08:36:46.638][Check 14] Test psa_asymmetric_verify - Zero as key handle
+[08:36:46.638]
+[08:36:46.638]
+[08:36:46.638]
+[08:36:46.638]Testing crypto key derivation APIs
+[08:36:46.639][Info] Executing tests from non-secure
+[08:36:46.647][Check 1] Test psa_raw_key_agreement - ECDH SECP256R1
+[08:36:47.224][Check 2] Test psa_raw_key_agreement - Small buffer size
+[08:36:47.804][Check 3] Test psa_raw_key_agreement - ECDH SECP384R1
+[08:36:48.756][Check 4] Test psa_raw_key_agreement - Invalid usage
+[08:36:48.757][Check 5] Test psa_raw_key_agreement - Unknown KDF
+[08:36:48.769][Check 6] Test psa_raw_key_agreement - Not a key agreement alg
+[08:36:48.770][Check 7] Test psa_raw_key_agreement - Public key on different curve
+[08:36:48.781][Check 8] Test psa_raw_key_agreement - Public key instead of private key
+[08:36:48.782][Check 9] Test psa_raw_key_agreement - Invalid key handle
+[08:36:48.794][Check 10] Test psa_raw_key_agreement - Zero as key handle
+[08:36:48.794]
+[08:36:48.794]
+[08:36:48.794]
+[08:36:48.794]Testing crypto key management APIs
+[08:36:48.795][Info] Executing tests from non-secure
+[08:36:48.807][Check 1] Test psa_copy_key - 16 Byte AES
+[08:36:48.807][Check 2] Test psa_copy_key - without copy usage
+[08:36:48.820][Check 3] Test psa_copy_key - invalid lifetime
+[08:36:48.820][Check 4] Test psa_copy_key - invalid key type
+[08:36:48.821][Check 5] Test psa_copy_key - invalid key bits
+[08:36:48.835][Check 6] Test psa_copy_key - 24 Byte AES
+[08:36:48.835][Check 7] Test psa_copy_key - 32 Byte AES
+[08:36:48.836][Check 8] Test psa_copy_key - 2048 RSA public key
+[08:36:48.841][Check 9] Test psa_copy_key - RSA 2048 keypair
+[08:36:48.855][Check 10] Test psa_copy_key - Incompatible target policy(source and target)
+[08:36:48.862][Check 11] Test psa_copy_key - source key with no export usage
+[08:36:48.882][Check 12] Test psa_copy_key - EC Public key
+[08:36:48.882][Check 13] Test psa_copy_key - EC keypair
+[08:36:48.882]
+[08:36:48.882]
+[08:36:48.882]
+[08:36:48.883]Testing crypto hash functions APIs
+[08:36:48.894][Info] Executing tests from non-secure
+[08:36:48.895][Check 1] Test psa_hash_clone - SHA224 algorithm
+[08:36:48.909][Check 2] Test psa_hash_clone - SHA256 algorithm
+[08:36:48.909][Check 3] Test psa_hash_clone - SHA384 algorithm
+[08:36:48.910][Check 4] Test psa_hash_clone - SHA512 algorithm
+[08:36:48.922][Check 5] Test psa_hash_clone - from an inactive source operation
+[08:36:48.922][Check 6] Test psa_hash_clone - on an active target operation
+[08:36:48.922]
+[08:36:48.922]
+[08:36:48.923]
+[08:36:48.935]Testing crypto MAC APIs
+[08:36:48.935][Info] Executing tests from non-secure
+[08:36:48.935][Check 1] Test psa_mac_compute HMAC SHA 224
+[08:36:48.935]        Failed at Checkpoint: 4
+[08:36:48.936]        Actual: 255
+[08:36:48.946]        Expected: 0
+[08:36:48.946]
+[08:36:48.946]
+[08:36:48.946]
+[08:36:48.947]Testing crypto MAC APIs
+[08:36:48.947][Info] Executing tests from non-secure
+[08:36:48.947][Check 1] Test psa_mac_verify HMAC SHA 224
+[08:36:48.960]        Failed at Checkpoint: 4
+[08:36:48.960]        Actual: 255
+[08:36:48.960]        Expected: 0
+[08:36:48.960]
+[08:36:48.960]
+[08:36:48.960]
+[08:36:48.961]Testing crypto symmetric cipher APIs
+[08:36:48.961][Info] Executing tests from non-secure
+[08:36:48.974][Check 1] Test psa_cipher_encrypt - Encrypt - AES CBC_NO_PADDING
+[08:36:48.974]        Failed at Checkpoint: 4
+[08:36:48.974]        Actual: 255
+[08:36:48.974]        Expected: 0
+[08:36:48.974]
+[08:36:48.974]
+[08:36:48.975]
+[08:36:48.986]Testing crypto symmetric cipher APIs
+[08:36:48.986][Info] Executing tests from non-secure
+[08:36:48.987][Check 1] Test psa_cipher_decrypt - Encrypt - AES CBC_NO_PADDING
+[08:36:48.997]        Failed at Checkpoint: 4
+[08:36:48.997]        Actual: 255
+[08:36:48.997]        Expected: -133
+[08:36:48.997]
+[08:36:48.997]
+[08:36:48.997]
+[08:36:48.997]Testing crypto key management APIs
+[08:36:48.998][Info] Executing tests from non-secure
+[08:36:49.010][Check 1] Test psa_open_key 16 Byte AES
+[08:36:49.010]        Failed at Checkpoint: 6
+[08:36:49.011]        Actual: -139
+[08:36:49.011]        Expected: 0
+[08:36:49.011]
+[08:36:49.011]
+[08:36:49.011]
+[08:36:49.026]Testing crypto key management APIs
+[08:36:49.026][Info] Executing tests from non-secure
+[08:36:49.026][Check 1] Test psa_close_key 16 Byte AES
+[08:36:49.027][Check 2] Test psa_close_key 24 Byte AES
+[08:36:49.136][Check 3] Test psa_close_key 32 Byte AES
+[08:36:49.137][Check 4] Test psa_close_key 2048 RSA public key
+[08:36:49.245][Check 5] Test psa_close_key with RSA 2048 keypair
+[08:36:49.371][Check 6] Test psa_close_key with EC Public key
+[08:36:49.479][Check 7] Test psa_close_key with EC keypair
+[08:36:49.590]
+[08:36:49.590]
+[08:36:49.590]
+[08:36:49.590]Testing crypto AEAD APIs
+[08:36:49.590][Info] Executing tests from non-secure
+[08:36:49.590][Check 1] Test psa_aead_encrypt_setup - AES-CCM
+[08:36:49.603]        Failed at Checkpoint: 4
+[08:36:49.603]        Actual: 255
+[08:36:49.603]        Expected: 0
+[08:36:49.603]
+[08:36:49.603]
+[08:36:49.603]
+[08:36:49.603]Testing crypto AEAD APIs
+[08:36:49.604][Info] Executing tests from non-secure
+[08:36:49.616][Check 1] Test psa_aead_decrypt_setup - AES-CCM
+[08:36:49.616]        Failed at Checkpoint: 4
+[08:36:49.616]        Actual: 255
+[08:36:49.616]        Expected: 0
+[08:36:49.616]
+[08:36:49.616]
+[08:36:49.616]
+[08:36:49.618]Testing crypto AEAD APIs
+[08:36:49.629][Info] Executing tests from non-secure
+[08:36:49.629][Check 1] Test psa_aead_generate_nonce - AES-CCM
+[08:36:49.629]        Failed at Checkpoint: 4
+[08:36:49.630]        Actual: 255
+[08:36:49.630]        Expected: 0
+[08:36:49.630]
+[08:36:49.630]
+[08:36:49.630]
+[08:36:49.641]Testing crypto AEAD APIs
+[08:36:49.641][Info] Executing tests from non-secure
+[08:36:49.641][Check 1] Test psa_aead_set_nonce - AES-CCM
+[08:36:49.642]        Failed at Checkpoint: 4
+[08:36:49.653]        Actual: 255
+[08:36:49.653]        Expected: 0
+[08:36:49.653]
+[08:36:49.653]
+[08:36:49.653]
+[08:36:49.654]Testing crypto AEAD APIs
+[08:36:49.654][Info] Executing tests from non-secure
+[08:36:49.668][Check 1] Test psa_aead_set_lengths - AES-CCM
+[08:36:49.668]        Failed at Checkpoint: 4
+[08:36:49.668]        Actual: 255
+[08:36:49.668]        Expected: 0
+[08:36:49.668]
+[08:36:49.668]
+[08:36:49.668]
+[08:36:49.668]Testing crypto AEAD APIs
+[08:36:49.669][Info] Executing tests from non-secure
+[08:36:49.681][Check 1] Test psa_aead_update_ad - AES-CCM
+[08:36:49.681]        Failed at Checkpoint: 4
+[08:36:49.681]        Actual: 255
+[08:36:49.682]        Expected: 0
+[08:36:49.682]
+[08:36:49.682]
+[08:36:49.682]
+[08:36:49.682]Testing crypto AEAD APIs
+[08:36:49.693][Info] Executing tests from non-secure
+[08:36:49.693][Check 1] Test psa_aead_update - AES-CCM
+[08:36:49.693]        Failed at Checkpoint: 4
+[08:36:49.693]        Actual: 255
+[08:36:49.693]        Expected: 0
+[08:36:49.693]
+[08:36:49.693]
+[08:36:49.694]
+[08:36:49.705]Testing crypto AEAD APIs
+[08:36:49.705][Info] Executing tests from non-secure
+[08:36:49.705][Check 1] Test psa_aead_finish - AES-CCM
+[08:36:49.706]        Failed at Checkpoint: 4
+[08:36:49.719]        Actual: 255
+[08:36:49.719]        Expected: 0
+[08:36:49.719]
+[08:36:49.719]
+[08:36:49.719]
+[08:36:49.719]Testing crypto AEAD APIs
+[08:36:49.720][Info] Executing tests from non-secure
+[08:36:49.731][Check 1] Test psa_aead_abort - AES-CCM
+[08:36:49.731]        Failed at Checkpoint: 4
+[08:36:49.731]        Actual: 255
+[08:36:49.731]        Expected: 0
+[08:36:49.731]
+[08:36:49.731]
+[08:36:49.731]
+[08:36:49.731]Testing crypto AEAD APIs
+[08:36:49.732][Info] Executing tests from non-secure
+[08:36:49.744][Check 1] Test psa_aead_verify - AES-CCM
+[08:36:49.744]        Failed at Checkpoint: 4
+[08:36:49.744]        Actual: 255
+[08:36:49.744]        Expected: 0
+[08:36:49.744]
+[08:36:49.744]
+[08:36:49.744]
+[08:36:49.745]Crypto Suite Report **********
+[08:36:49.755]TOTAL TESTS     : 61
+[08:36:49.755]TOTAL PASSED    : 45
+[08:36:49.755]TOTAL SIM ERROR : 0
+[08:36:49.755]TOTAL FAILED    : 16
+[08:36:49.756]TOTAL SKIPPED   : 0
+[08:36:49.763]******************************************
+[08:36:49.764]
