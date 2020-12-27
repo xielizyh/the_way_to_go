@@ -11,5 +11,9 @@ func main() {
 	fmt.Println("------Excersise 14.3-----")
 	// gosum()
 	fmt.Println("------Excersise 14.4-----")
-	producerConsumer()
+	// producerConsumer()
+	fmt.Println("------Excersise 14.7-----")
+	// goroutinePanic()
+	// goroutineClose()
+	goroutineSelect()
 }

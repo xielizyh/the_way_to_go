@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // https://zhuanlan.zhihu.com/p/74047342
 // https://studygolang.com/articles/9592
 // https://studygolang.com/articles/4474
@@ -13,5 +15,8 @@ package main
 // 并发程序可以是并行的，也可以不是
 // “并发关乎结构，并行关乎执行”
 func main() {
-
+	fmt.Println("------Example 14.6-----")
+	// chlIdiom2()
+	fmt.Println("------Example 14.10-----")
+	goroutineSelect()
 }
