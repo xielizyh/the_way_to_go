@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// 协程切换的本质是异步io函数(busy活着blocking)
+// 协程切换的本质是异步io函数(busy或者blocking)
 
 // chlBlock 可以得到输出“received 10”
 // 因为通道发送先准备好，故执行“x := <-ch”不会阻塞，

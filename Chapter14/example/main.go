@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // https://zhuanlan.zhihu.com/p/74047342
 // https://studygolang.com/articles/9592
@@ -18,5 +20,22 @@ func main() {
 	fmt.Println("------Example 14.6-----")
 	// chlIdiom2()
 	fmt.Println("------Example 14.10-----")
-	goroutineSelect()
+	// goroutineSelect()
+	// ticker := time.NewTicker(1e8)
+	// defer ticker.Stop()
+	// go func() {
+	// 	for {
+	// 		select {
+	// 		case <-ticker.C:
+	// 			log.Println("hello")
+	// 		}
+	// 	}
+	// }()
+	// time.Sleep(time.Second)
+	fmt.Println("------Example 14.14-----")
+	// multiplexServer()
+	fmt.Println("------Example 14.17-----")
+	// channing()
+	fmt.Println("------Example 14.19-----")
+	concAccess()
 }
