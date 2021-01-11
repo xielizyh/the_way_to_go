@@ -1,16 +1,29 @@
 package store
 
 import (
-	"encoding/json"
+	"encoding/gob"
 	"errors"
 	key "goto_v5/key"
 	"io"
 	"log"
+	"net/rpc"
 	"os"
 	"sync"
 )
 
 const saveQueueLength = 1024
+
+// Store 存储接口
+type Store interface {
+	Put(key, url *string) error
+	Get(key, url *string) error
+}
+
+// ProxyStore 代理缓存
+type ProxyStore struct {
+	urls   *URLStore
+	client *rpc.Client
+}
 
 // URLStore 存储URL
 type URLStore struct {
@@ -26,14 +39,15 @@ type record struct {
 
 // NewURLStore 工厂函数
 func NewURLStore(filename string) *URLStore {
-	s := &URLStore{
-		urls: make(map[string]string),
-		save: make(chan record, saveQueueLength),
+	s := &URLStore{urls: make(map[string]string)}
+	if filename != "" {
+		s.save = make(chan record, saveQueueLength)
+		if err := s.load(filename); err != nil {
+			log.Println("Error loading data in URLStore:", err)
+		}
+		go s.saveLoop(filename)
 	}
-	if err := s.load(filename); err != nil {
-		log.Println("Error loading data in URLStore:", err)
-	}
-	go s.saveLoop(filename)
+
 	return s
 }
 
@@ -49,7 +63,7 @@ func (s *URLStore) Get(key, url *string) error {
 }
 
 // Set 设置
-func (s *URLStore) Set(*key, url string) error {
+func (s *URLStore) Set(key, url *string) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	// 如果键存在，map不进行更新
@@ -60,8 +74,8 @@ func (s *URLStore) Set(*key, url string) error {
 	return nil
 }
 
-// Count 获取键值对的数量
-func (s *URLStore) Count() int {
+// dount 获取键值对的数量
+func (s *URLStore) count() int {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 	return len(s.urls)
@@ -70,7 +84,7 @@ func (s *URLStore) Count() int {
 // Put 接收长URL，计算短URL，存储数据
 func (s *URLStore) Put(k, url *string) error {
 	for {
-		*k = key.GenKey(s.Count())
+		*k = key.GenKey(s.count())
 		if err := s.Set(k, url); err != nil {
 			// 发送记录record到信道
 			s.save <- record{*k, *url}
@@ -89,8 +103,8 @@ func (s *URLStore) load(filename string) error {
 	}
 	defer f.Close()
 	// 新建解码器
-	// d := gob.NewDecoder(f)
-	d := json.NewDecoder(f)
+	d := gob.NewDecoder(f)
+	// d := json.NewDecoder(f)
 	for err == nil {
 		var r record
 		// 解码
@@ -111,12 +125,44 @@ func (s *URLStore) saveLoop(filename string) {
 		log.Fatal("Error opening URLStore: ", err)
 	}
 	defer f.Close()
-	// e := gob.NewEncoder(f)
-	e := json.NewEncoder(f)
+	e := gob.NewEncoder(f)
+	// e := json.NewEncoder(f)
 	for {
 		r := <-s.save
 		if err := e.Encode(r); err != nil {
 			log.Println("Error saving to URLStore: ", err)
 		}
 	}
+}
+
+// NewProxyStore 创建ProxyStore
+func NewProxyStore(addr string) *ProxyStore {
+	client, err := rpc.DialHTTP("tcp", addr)
+	if err != nil {
+		log.Println("Error constructing ProxyStore: ", err)
+	}
+	return &ProxyStore{urls: NewURLStore(""), client: client}
+}
+
+// Get 代理存储Get
+func (s *ProxyStore) Get(key, url *string) error {
+	// url found in local map
+	if err := s.urls.Get(key, url); err == nil {
+		return nil
+	}
+	// url not found in local map, make rpc-call:
+	if err := s.client.Call("st.Get", key, url); err != nil {
+		return err
+	}
+	s.urls.Set(key, url)
+	return nil
+}
+
+// Put 代理存储Put
+func (s *ProxyStore) Put(key, url *string) error {
+	if err := s.client.Call("Store.Put", key, url); err != nil {
+		return err
+	}
+	s.urls.Set(key, url)
+	return nil
 }

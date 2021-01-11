@@ -10,9 +10,10 @@ import (
 
 var (
 	listenAddr = flag.String("http", ":8080", "http listen address")
-	// dataFile   = flag.String("file", "store.gob", "data store file name")
-	dataFile   = flag.String("file", "store.json", "data store file")
+	dataFile   = flag.String("file", "store.gob", "data store file name")
+	// dataFile   = flag.String("file", "store.json", "data store file")
 	hostname   = flag.String("host", "localhost:8080", "host name and port")
+	masterAddr = flag.String("master", "", "RPC master address")
 	rpcEnabled = flag.Bool("rpc", false, "enable RPC server")
 )
 
@@ -24,18 +25,28 @@ URL: <input type="text" name="url">
 </form>
 `
 
-var st *store.URLStore
+// var st *store.URLStore
+// 接口
+var st store.Store
 
 func main() {
 	flag.Parse()
-	st = store.NewURLStore(*dataFile)
+	if *masterAddr != "" { //we are a slave
+		st = store.NewProxyStore(*masterAddr)
+	} else { // we are the master
+		st = store.NewURLStore(*dataFile)
+	}
 	if *rpcEnabled {
-		rpc.RegisterName("Store", st)
+		// rpc.RegisterName("Store", st)
+		rpc.Register(st)
 		rpc.HandleHTTP()
 	}
 	http.HandleFunc("/", Redirect)
 	http.HandleFunc("/add", Add)
-	http.ListenAndServe(*listenAddr, nil)
+	// fmt.Println(*listenAddr)
+	err := http.ListenAndServe(*listenAddr, nil)
+	fmt.Println(err)
+	fmt.Println("end and exiting")
 }
 
 // Redirect 重定向
@@ -45,7 +56,7 @@ func Redirect(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("key is ", key)
 	// 提前长URL
 	var url string
-	if err := store.Get(&key, &url); err != nil {
+	if err := st.Get(&key, &url); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -66,8 +77,8 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	}
 	// 存储长URL
 	var key string
-	if err := store.Put(&url, &key); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServer)
+	if err := st.Put(&url, &key); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	// 发送短URL给用户
