@@ -48,8 +48,26 @@ func init() {
 
 func main() {
 	defer Db.Close()
+	createTable()
 	// insertOperate()
-	queryOperate()
+	// queryOperate()
+	// updateOperate()
+	// deleteOperate()
+	// transactionOperate()
+}
+
+func createTable() {
+	// 创建表名为place的表
+	sql := `
+		create table if not exists place(
+			country varchar(200),
+			city varchar(200),
+			telcode int
+		)ENGINE=InnoDB default charset=utf8;
+	`
+	if _, err := Db.Exec(sql); err != nil {
+		fmt.Println("Create table failed, err: ", err)
+	}
 }
 
 // 插入操作
@@ -64,17 +82,91 @@ func insertOperate() {
 		fmt.Println("LastInsertId failed, ", err)
 		return
 	}
-	fmt.Println("Insert ok: ", id)
+	fmt.Println("Insert ok, affected rows: ", id)
 }
 
 // 查询操作
 func queryOperate() {
-	// var person []Person
-	person := make([]Person, 10)
-	err := Db.Select(&person, "select user_id, username, sex, email from person where user_id=?", 3)
+	var person []Person
+	err := Db.Select(&person, "select user_id, username, sex, email from person where user_id=?", 2)
 	if err != nil {
 		fmt.Println("Select failed, err: ", err)
 		return
 	}
 	fmt.Println("Select ok: ", person)
+}
+
+// 更改操作
+func updateOperate() {
+	// 在一条UPDATE语句中，如果要更新多个字段，字段间不能使用“AND”，而应该用逗号分隔
+	result, err := Db.Exec("update person set username=?, email=? where user_id=?", "lisi", "lisi@qq.com", 4)
+	if err != nil {
+		fmt.Println("Update failed, err: ", err)
+		return
+	}
+	row, err := result.RowsAffected()
+	if err != nil {
+		fmt.Println("RowsAffected failed, err:", err)
+		return
+	}
+	fmt.Println("Update ok, affected rows: ", row)
+}
+
+// 删除操作
+func deleteOperate() {
+	result, err := Db.Exec("delete from person where user_id=?", 3)
+	if err != nil {
+		fmt.Println("Delete failed, err: ", err)
+		return
+	}
+	row, err := result.RowsAffected()
+	if err != nil {
+		fmt.Println("RowsAffected failed, err:", err)
+		return
+	}
+	fmt.Println("Delete ok, affected rows: ", row)
+
+}
+
+// 事务操作
+func transactionOperate() {
+	// 开始事务
+	tx, err := Db.Begin()
+	if err != nil {
+		fmt.Println("Begin failed, err: ", err)
+		return
+	}
+	result, err := tx.Exec("insert into person(username, sex, email) values(?,?,?)", "wangwu", "man", "wangwu@qq.com")
+	if err != nil {
+		fmt.Println("Exec failed, err:", err)
+		// 事务回滚
+		tx.Rollback()
+		return
+	}
+	id, err := result.LastInsertId()
+	if err != nil {
+		fmt.Println("LastInsertId failed, err:", err)
+		// 事务回滚
+		tx.Rollback()
+		return
+	}
+	fmt.Println("Insert ok, id: ", id)
+
+	result, err = tx.Exec("update person set sex=? where username=?", "women", "lisi")
+	if err != nil {
+		fmt.Println("Update failed, err:", err)
+		tx.Rollback()
+		return
+	}
+	rows, err := result.RowsAffected()
+	if err != nil {
+		fmt.Println("RowsAffected failed, err:", err)
+		// 事务回滚
+		tx.Rollback()
+		return
+	}
+	fmt.Println("Update ok, affected rows:", rows)
+
+	// 事务确认
+	tx.Commit()
 }
