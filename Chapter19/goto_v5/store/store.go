@@ -82,10 +82,11 @@ func (s *URLStore) count() int {
 }
 
 // Put 接收长URL，计算短URL，存储数据
-func (s *URLStore) Put(k, url *string) error {
+func (s *URLStore) Put(url, k *string) error {
+	// fmt.Printf("%s:%s", *url, *k)
 	for {
 		*k = key.GenKey(s.count())
-		if err := s.Set(k, url); err != nil {
+		if err := s.Set(k, url); err == nil {
 			// 发送记录record到信道
 			s.save <- record{*k, *url}
 			return nil
@@ -151,7 +152,7 @@ func (s *ProxyStore) Get(key, url *string) error {
 		return nil
 	}
 	// url not found in local map, make rpc-call:
-	if err := s.client.Call("st.Get", key, url); err != nil {
+	if err := s.client.Call("Store1.Get", key, url); err != nil {
 		return err
 	}
 	s.urls.Set(key, url)
@@ -159,8 +160,11 @@ func (s *ProxyStore) Get(key, url *string) error {
 }
 
 // Put 代理存储Put
-func (s *ProxyStore) Put(key, url *string) error {
-	if err := s.client.Call("Store.Put", key, url); err != nil {
+func (s *ProxyStore) Put(url, key *string) error {
+	// 注意这里远程调用的第一个参数：Type.Method
+	// 其中Type必须为rpc.RegisterName注册的名字(如果使用rpc.Register默认就是对象的类型名字)
+	if err := s.client.Call("Store1.Put", url, key); err != nil {
+		// if err := s.client.Call("st.Put", url, key); err != nil {
 		return err
 	}
 	s.urls.Set(key, url)

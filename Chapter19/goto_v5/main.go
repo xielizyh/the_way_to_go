@@ -37,8 +37,11 @@ func main() {
 		st = store.NewURLStore(*dataFile)
 	}
 	if *rpcEnabled {
-		// rpc.RegisterName("Store", st)
-		rpc.Register(st)
+		// rpc.RegisterName是指定特定的名字
+		rpc.RegisterName("Store1", st)
+		// 注意rpc.Register默认名字为对象的类型名字，即Store
+		// https://studygolang.com/articles/8738
+		// rpc.Register(st)
 		rpc.HandleHTTP()
 	}
 	http.HandleFunc("/", Redirect)
