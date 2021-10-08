@@ -60,6 +60,7 @@ func createTable() {
 	// 创建表名为place的表
 	sql := `
 		create table if not exists place(
+			id int(11) primary key auto_increment,
 			country varchar(200),
 			city varchar(200),
 			telcode int

@@ -10,3 +10,6 @@ github.com/jmoiron/sqlx v1.3.4
 
 执行```go build```就会下载依赖包
 
+# 常见问题
+1. ```Error 1075: Incorrect table definition; there can be only one auto column and it must be defined as a key```
+[设为自增的字段必须是主键](https://www.cnblogs.com/guodongdidi/p/6290782.html)
